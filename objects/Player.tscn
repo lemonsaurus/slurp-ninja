@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/images/frog ninja.png" type="Texture" id=1]
+[ext_resource path="res://objects/Player.gd" type="Script" id=2]
+[ext_resource path="res://objects/Tongue.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 26.4386 )
+
+[node name="Player" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 2 )
+
+[node name="Tongue" parent="." instance=ExtResource( 3 )]
+position = Vector2( -16, -16 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1, 5.3454 )
+shape = SubResource( 1 )
