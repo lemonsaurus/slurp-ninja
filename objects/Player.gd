@@ -7,6 +7,7 @@ export var gravity = 20
 export var max_speed = 1000
 export var friction_air = 0.95
 export var tongue_pull = 25
+export var flight_speed = 10
 
 var friction_ground = 0.85
 var velocity = Vector2(0,0)
@@ -37,7 +38,6 @@ func _input(event: InputEvent) -> void:
 				self.is_facing_left = false
 				$Tongue.position = tongue_position_right
 				
-
 		else:
 			$Tongue.release()
 			$Sprite.frame = 0
@@ -50,18 +50,35 @@ func _physics_process(_delta: float) -> void:
 
 	# Slurp physics!
 	if $Tongue.hooked:
+		var tongue_distance = $Tongue.tip_location.distance_to(self.global_position)
+			
 		var tongue_direction = to_local($Tongue.tip_location).normalized() 
 		tongue_velocity = tongue_direction * tongue_pull
 		
+		# Increase the x velocity to make the player arc.
+		var true_flight = 300.0 / tongue_distance
+		if tongue_velocity.x > 0:
+			tongue_velocity.x += self.flight_speed * true_flight
+		elif tongue_velocity.x < 0:
+			tongue_velocity.x -= self.flight_speed * true_flight
+	
+		# If we're falling, we want to pull up a bit faster.
 		if tongue_velocity.y > 0:
-			tongue_velocity.y *= 0.55
-		
-		else:
-			tongue_velocity.y *= 1.65
-			
+			tongue_velocity.y *= 0.85
+		elif tongue_velocity.y < 0:
+			tongue_velocity.y *= 1.30
+				
 	else:
 		tongue_velocity = Vector2(0,0)
+		
 	velocity += tongue_velocity
+	
+	# This is the magic sauce. This makes it actually move.
+	move_and_slide(velocity, Vector2.UP)	
+	
+	# Apply some clamps. We don't want the frog moving _too_ fast.
+	velocity.y = clamp(velocity.y, -max_speed, max_speed)
+	velocity.x = clamp(velocity.x, -max_speed, max_speed)
 	
 	# Rotate around like a madman
 	var grounded = is_on_floor()
@@ -80,15 +97,8 @@ func _physics_process(_delta: float) -> void:
 	# Reset flip
 	if $Tongue.hooked or grounded:
 		self.is_flipping = false
-		self.flip_speed = rand_range(0.5, 3.0)
+		self.flip_speed = rand_range(1.5, 3.0)
 		
-
-	# This is the magic sauce. This makes it actually move.
-	move_and_slide(velocity, Vector2.UP)
-	
-	# Apply some clamps. We don't want the frog moving _too_ fast.
-	velocity.y = clamp(velocity.y, -max_speed, max_speed)
-	velocity.x = clamp(velocity.x, -max_speed, max_speed)
 	
 	# Apply surface friction
 	if grounded:
@@ -98,9 +108,9 @@ func _physics_process(_delta: float) -> void:
 			self.is_initialized = true
 		
 		$Sprite.rotation = 0
-		velocity.x *= friction_ground	# Apply friction only on x (we are not moving on y anyway)
-		if velocity.y >= 5:		        # Keep the y-velocity small such that
-			velocity.y = 5		        # gravity doesn't make this number huge
+		velocity.x *= friction_ground
+		if velocity.y >= 5:		     
+			velocity.y = 5		     
 			
 	elif is_on_ceiling() and velocity.y <= -5:
 		velocity.y = -5

@@ -36,8 +36,9 @@ height = 12.6081
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 2 )
-gravity = 15
+gravity = 12
 friction_air = 0.99
+flight_speed = 12
 
 [node name="Tongue" parent="." instance=ExtResource( 3 )]
 position = Vector2( 4, -13 )
