@@ -51,11 +51,15 @@ func _physics_process(_delta: float) -> void:
 	# Slurp physics!
 	if $Tongue.hooked:
 		var tongue_distance = $Tongue.tip_location.distance_to(self.global_position)
-			
 		var tongue_direction = to_local($Tongue.tip_location).normalized() 
+
+		# Set initial velocity.		
 		tongue_velocity = tongue_direction * tongue_pull
-		
+
 		# Increase the x velocity to make the player arc.
+		#
+		# This will increase more and more the closer you are
+		# to the tip of the tongue.
 		var true_flight = 300.0 / tongue_distance
 		if tongue_velocity.x > 0:
 			tongue_velocity.x += self.flight_speed * true_flight
@@ -71,16 +75,15 @@ func _physics_process(_delta: float) -> void:
 	else:
 		tongue_velocity = Vector2(0,0)
 		
-	velocity += tongue_velocity
-	
 	# This is the magic sauce. This makes it actually move.
+	velocity += tongue_velocity
 	move_and_slide(velocity, Vector2.UP)	
 	
 	# Apply some clamps. We don't want the frog moving _too_ fast.
 	velocity.y = clamp(velocity.y, -max_speed, max_speed)
 	velocity.x = clamp(velocity.x, -max_speed, max_speed)
 	
-	# Rotate around like a madman
+	# Make the frog flip!
 	var grounded = is_on_floor()
 	if not $Tongue.hooked and not grounded:
 		
@@ -94,7 +97,7 @@ func _physics_process(_delta: float) -> void:
 			self.is_flipping = true
 			
 	
-	# Reset flip
+	# Reset flip states.
 	if $Tongue.hooked or grounded:
 		self.is_flipping = false
 		self.flip_speed = rand_range(1.5, 3.0)
@@ -102,22 +105,21 @@ func _physics_process(_delta: float) -> void:
 	
 	# Apply surface friction
 	if grounded:
-		
-		# Is this the first time?
-		if not self.is_initialized:
-			self.is_initialized = true
-		
 		$Sprite.rotation = 0
 		velocity.x *= friction_ground
 		if velocity.y >= 5:		     
 			velocity.y = 5		     
 			
+		# Is this the first time we land?
+		if not self.is_initialized:
+			self.is_initialized = true
+			
+	# Bounce off ceilings.
 	elif is_on_ceiling() and velocity.y <= -5:
 		velocity.y = -5
 
+	# Apply air friction
 	if not grounded:
-		# Apply air friction		
 		velocity.x *= friction_air
 		if velocity.y > 0:
 			velocity.y *= friction_air
-			
