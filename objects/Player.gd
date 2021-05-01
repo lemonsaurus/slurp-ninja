@@ -13,15 +13,26 @@ var velocity = Vector2(0,0)
 var tongue_velocity = Vector2(0,0)
 var is_flipping = false
 var is_initialized = false
+var is_facing_left = false
 var flip_speed = 2
 
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.pressed:
-			$Tongue.slurp(event.position - get_viewport().size * 0.5)
+			var click_position = event.position - get_viewport().size * 0.5
+			$Tongue.slurp(click_position)
 			$Sprite.frame = 1
 			$SFX.slurp()
+		
+			# Flip the sprite if we're clicking behind the frog.
+			if click_position.x < 0:
+				$Sprite.flip_h = true
+				self.is_facing_left = true
+			else:
+				$Sprite.flip_h = false
+				self.is_facing_left = false
+				
 
 		else:
 			$Tongue.release()
@@ -51,7 +62,11 @@ func _physics_process(_delta: float) -> void:
 	# Rotate around like a madman
 	var grounded = is_on_floor()
 	if not $Tongue.hooked and not grounded:
-		$Sprite.rotate(-0.1 * self.flip_speed)
+		
+		if self.is_facing_left:
+			$Sprite.rotate(0.1 * self.flip_speed)
+		else:
+			$Sprite.rotate(-0.1 * self.flip_speed)
 		
 		if not self.is_flipping and self.is_initialized:
 			$SFX.flip()
