@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Tongue_Rope_02.mp3-c8904f4577988a1efed5075880120f9b.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/Tongue_Rope_02.mp3"
+dest_files=[ "res://.import/Tongue_Rope_02.mp3-c8904f4577988a1efed5075880120f9b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

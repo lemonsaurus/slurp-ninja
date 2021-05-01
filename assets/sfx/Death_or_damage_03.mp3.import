@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Death_or_damage_03.mp3-63a5489fa54a35cccd4456911b1921a5.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/Death_or_damage_03.mp3"
+dest_files=[ "res://.import/Death_or_damage_03.mp3-63a5489fa54a35cccd4456911b1921a5.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

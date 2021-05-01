@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/leap_of_frog.mp3-c9e3f67f6985b46be2bbf4367d956376.mp3str"
+
+[deps]
+
+source_file="res://assets/music/leap_of_frog.mp3"
+dest_files=[ "res://.import/leap_of_frog.mp3-c9e3f67f6985b46be2bbf4367d956376.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

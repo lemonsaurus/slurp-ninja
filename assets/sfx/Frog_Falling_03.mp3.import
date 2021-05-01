@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Frog_Falling_03.mp3-8b8ebbf1928583961b3ec6c8e060097b.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/Frog_Falling_03.mp3"
+dest_files=[ "res://.import/Frog_Falling_03.mp3-8b8ebbf1928583961b3ec6c8e060097b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

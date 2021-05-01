@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/frogjutsu.mp3-ee8e6b8a56b2d7e06aa44911f63af91e.mp3str"
+
+[deps]
+
+source_file="res://assets/music/frogjutsu.mp3"
+dest_files=[ "res://.import/frogjutsu.mp3-ee8e6b8a56b2d7e06aa44911f63af91e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

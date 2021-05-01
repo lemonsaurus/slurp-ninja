@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Frog_Croaking_02.mp3-90a7f7547f7b6ffac022dba2c0521dc4.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/Frog_Croaking_02.mp3"
+dest_files=[ "res://.import/Frog_Croaking_02.mp3-90a7f7547f7b6ffac022dba2c0521dc4.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

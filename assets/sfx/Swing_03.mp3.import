@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Swing_03.mp3-56d73777fb2b4be8189eda76ff8d60d3.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/Swing_03.mp3"
+dest_files=[ "res://.import/Swing_03.mp3-56d73777fb2b4be8189eda76ff8d60d3.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
