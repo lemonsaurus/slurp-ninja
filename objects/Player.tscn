@@ -40,7 +40,7 @@ gravity = 15
 friction_air = 0.99
 
 [node name="Tongue" parent="." instance=ExtResource( 3 )]
-position = Vector2( 3.838, -13.012 )
+position = Vector2( 4, -13 )
 rotation = 0.380482
 scale = Vector2( 0.5, 0.5 )
 SPEED = 20

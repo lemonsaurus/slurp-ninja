@@ -11,6 +11,8 @@ export var tongue_pull = 25
 var friction_ground = 0.85
 var velocity = Vector2(0,0)
 var tongue_velocity = Vector2(0,0)
+var tongue_position_right = Vector2(4, -13)
+var tongue_position_left = Vector2(-13, -4)
 var is_flipping = false
 var is_initialized = false
 var is_facing_left = false
@@ -29,9 +31,11 @@ func _input(event: InputEvent) -> void:
 			if click_position.x < 0:
 				$Sprite.flip_h = true
 				self.is_facing_left = true
+				$Tongue.position = tongue_position_left
 			else:
 				$Sprite.flip_h = false
 				self.is_facing_left = false
+				$Tongue.position = tongue_position_right
 				
 
 		else:
