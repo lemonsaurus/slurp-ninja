@@ -1,24 +1,152 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=30 format=2]
 
-[ext_resource path="res://assets/images/frog ninja.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/frog_64.png" type="Texture" id=1]
 [ext_resource path="res://objects/Player.gd" type="Script" id=2]
 [ext_resource path="res://objects/Tongue.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/SFX.gd" type="Script" id=4]
+[ext_resource path="res://assets/sfx/Frog_Falling_01.mp3" type="AudioStream" id=5]
+[ext_resource path="res://assets/sfx/Frog_Croaking_02.mp3" type="AudioStream" id=6]
+[ext_resource path="res://assets/sfx/Death_or_damage_06.mp3" type="AudioStream" id=7]
+[ext_resource path="res://assets/sfx/Tongue_Rope_05.mp3" type="AudioStream" id=8]
+[ext_resource path="res://assets/sfx/Death_or_damage_01.mp3" type="AudioStream" id=9]
+[ext_resource path="res://assets/sfx/Tongue_Rope_07.mp3" type="AudioStream" id=10]
+[ext_resource path="res://assets/sfx/Death_or_damage_02.mp3" type="AudioStream" id=11]
+[ext_resource path="res://assets/sfx/Frog_Croaking_03.mp3" type="AudioStream" id=12]
+[ext_resource path="res://assets/sfx/Swing_01.mp3" type="AudioStream" id=13]
+[ext_resource path="res://assets/sfx/Frog_Falling_03.mp3" type="AudioStream" id=14]
+[ext_resource path="res://assets/sfx/Swing_03.mp3" type="AudioStream" id=15]
+[ext_resource path="res://assets/sfx/Tongue_Rope_02.mp3" type="AudioStream" id=16]
+[ext_resource path="res://assets/sfx/Tongue_Rope_01.mp3" type="AudioStream" id=17]
+[ext_resource path="res://assets/sfx/Tongue_Rope_03.mp3" type="AudioStream" id=18]
+[ext_resource path="res://assets/sfx/Death_or_damage_05.mp3" type="AudioStream" id=19]
+[ext_resource path="res://assets/sfx/Frog_Croaking_01.mp3" type="AudioStream" id=20]
+[ext_resource path="res://assets/sfx/Frog_Falling_02.mp3" type="AudioStream" id=21]
+[ext_resource path="res://assets/sfx/Swing_05.mp3" type="AudioStream" id=22]
+[ext_resource path="res://assets/sfx/Swing_04.mp3" type="AudioStream" id=23]
+[ext_resource path="res://assets/sfx/Tongue_Rope_04.mp3" type="AudioStream" id=24]
+[ext_resource path="res://assets/sfx/Death_or_damage_03.mp3" type="AudioStream" id=25]
+[ext_resource path="res://assets/sfx/Tongue_Rope_06.mp3" type="AudioStream" id=26]
+[ext_resource path="res://assets/sfx/Death_or_damage_04.mp3" type="AudioStream" id=27]
+[ext_resource path="res://assets/sfx/Swing_02.mp3" type="AudioStream" id=28]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 26.4386 )
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 13.867
+height = 12.6081
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 2 )
+gravity = 15
+friction_air = 0.99
 
 [node name="Tongue" parent="." instance=ExtResource( 3 )]
-position = Vector2( -16, -16 )
+position = Vector2( 3.838, -13.012 )
+rotation = 0.380482
 scale = Vector2( 0.5, 0.5 )
+SPEED = 20
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1, 5.3454 )
+position = Vector2( -4.99426, 5.3454 )
+rotation = 1.5708
 shape = SubResource( 1 )
+
+[node name="SFX" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="Flip" type="Node" parent="SFX"]
+
+[node name="Flip1" type="AudioStreamPlayer" parent="SFX/Flip"]
+stream = ExtResource( 13 )
+volume_db = -8.078
+
+[node name="Flip2" type="AudioStreamPlayer" parent="SFX/Flip"]
+stream = ExtResource( 28 )
+volume_db = -8.078
+
+[node name="Flip3" type="AudioStreamPlayer" parent="SFX/Flip"]
+stream = ExtResource( 15 )
+volume_db = -8.078
+
+[node name="Flip4" type="AudioStreamPlayer" parent="SFX/Flip"]
+stream = ExtResource( 23 )
+volume_db = -8.078
+
+[node name="Flip5" type="AudioStreamPlayer" parent="SFX/Flip"]
+stream = ExtResource( 22 )
+volume_db = -8.078
+
+[node name="Slurp" type="Node" parent="SFX"]
+
+[node name="Slurp1" type="AudioStreamPlayer" parent="SFX/Slurp"]
+stream = ExtResource( 17 )
+volume_db = -8.078
+
+[node name="Slurp2" type="AudioStreamPlayer" parent="SFX/Slurp"]
+stream = ExtResource( 16 )
+volume_db = -8.078
+
+[node name="Slurp3" type="AudioStreamPlayer" parent="SFX/Slurp"]
+stream = ExtResource( 18 )
+volume_db = -8.078
+
+[node name="Slurp4" type="AudioStreamPlayer" parent="SFX/Slurp"]
+stream = ExtResource( 24 )
+volume_db = -8.078
+
+[node name="Slurp5" type="AudioStreamPlayer" parent="SFX/Slurp"]
+stream = ExtResource( 8 )
+volume_db = -8.078
+
+[node name="Slurp6" type="AudioStreamPlayer" parent="SFX/Slurp"]
+stream = ExtResource( 26 )
+volume_db = -8.078
+
+[node name="Slurp7" type="AudioStreamPlayer" parent="SFX/Slurp"]
+stream = ExtResource( 10 )
+volume_db = -8.078
+
+[node name="Fall" type="Node" parent="SFX"]
+
+[node name="Fall1" type="AudioStreamPlayer" parent="SFX/Fall"]
+stream = ExtResource( 5 )
+
+[node name="Fall2" type="AudioStreamPlayer" parent="SFX/Fall"]
+stream = ExtResource( 21 )
+
+[node name="Fall3" type="AudioStreamPlayer" parent="SFX/Fall"]
+stream = ExtResource( 14 )
+
+[node name="Croak" type="Node" parent="SFX"]
+
+[node name="Croak1" type="AudioStreamPlayer" parent="SFX/Croak"]
+stream = ExtResource( 20 )
+
+[node name="Croak2" type="AudioStreamPlayer" parent="SFX/Croak"]
+stream = ExtResource( 6 )
+
+[node name="Croak3" type="AudioStreamPlayer" parent="SFX/Croak"]
+stream = ExtResource( 12 )
+
+[node name="Damage" type="Node" parent="SFX"]
+
+[node name="Damage1" type="AudioStreamPlayer" parent="SFX/Damage"]
+stream = ExtResource( 9 )
+
+[node name="Damage2" type="AudioStreamPlayer" parent="SFX/Damage"]
+stream = ExtResource( 11 )
+
+[node name="Damage3" type="AudioStreamPlayer" parent="SFX/Damage"]
+stream = ExtResource( 25 )
+
+[node name="Damage4" type="AudioStreamPlayer" parent="SFX/Damage"]
+stream = ExtResource( 27 )
+
+[node name="Damage5" type="AudioStreamPlayer" parent="SFX/Damage"]
+stream = ExtResource( 19 )
+
+[node name="Damage6" type="AudioStreamPlayer" parent="SFX/Damage"]
+stream = ExtResource( 7 )
