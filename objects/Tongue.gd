@@ -3,7 +3,7 @@ Allow the tongue to shoot out like a hookshot!
 """
 extends Node2D
 
-const SPEED = 10  # Slurping speed.
+export var SPEED = 10  # Slurping speed.
 
 onready var slurplets = $Slurplets
 onready var tip = $Tip
@@ -29,7 +29,7 @@ func release() -> void:
 
 func _process(_delta: float) -> void:
 	"""Orient the tongue and the slurplets for every real frame."""
-	# Hide the tongue if we're not currently using it.
+	# No point in doing anything if we're not using the tongue
 	self.visible = slurping or hooked
 	if not self.visible:
 		return

@@ -21,6 +21,7 @@ func _input(event: InputEvent) -> void:
 		if event.pressed:
 			$Tongue.slurp(event.position - get_viewport().size * 0.5)
 			$Sprite.frame = 1
+			$SFX.slurp()
 
 		else:
 			$Tongue.release()
@@ -46,6 +47,22 @@ func _physics_process(_delta: float) -> void:
 	else:
 		tongue_velocity = Vector2(0,0)
 	velocity += tongue_velocity
+	
+	# Rotate around like a madman
+	var grounded = is_on_floor()
+	if not $Tongue.hooked and not grounded:
+		$Sprite.rotate(-0.1 * self.flip_speed)
+		
+		if not self.is_flipping and self.is_initialized:
+			$SFX.flip()
+			self.is_flipping = true
+			
+	
+	# Reset flip
+	if $Tongue.hooked or grounded:
+		self.is_flipping = false
+		self.flip_speed = rand_range(0.5, 3.0)
+		
 
 	# This is the magic sauce. This makes it actually move.
 	move_and_slide(velocity, Vector2.UP)

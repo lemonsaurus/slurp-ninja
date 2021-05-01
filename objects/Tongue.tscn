@@ -11,12 +11,11 @@ height = 15.3467
 [node name="Tongue" type="Node2D"]
 position = Vector2( 56.1266, 35.636 )
 script = ExtResource( 3 )
+SPEED = -38
 
 [node name="Slurplets" type="Sprite" parent="."]
-position = Vector2( 47.8172, -1.18347 )
 texture = ExtResource( 2 )
 centered = false
-offset = Vector2( 32, 0 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 180 )
 
@@ -24,9 +23,10 @@ region_rect = Rect2( 0, 0, 32, 180 )
 position = Vector2( 1.41422, 2.82843 )
 collision_layer = 4
 
-[node name="Splat" type="Sprite" parent="Tip"]
-position = Vector2( 53.9106, -5.81963 )
+[node name="Sprite" type="Sprite" parent="Tip"]
+position = Vector2( 1, 0 )
 texture = ExtResource( 1 )
+offset = Vector2( 14.5, -16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tip"]
 position = Vector2( 53.9341, -13.5053 )
