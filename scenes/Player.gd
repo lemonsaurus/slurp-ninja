@@ -29,22 +29,22 @@ func _input(event: InputEvent) -> void:
 		if event.pressed:
 			var click_position = event.position - get_viewport().get_size_override() * 0.5
 			$Tongue.slurp(click_position)
-			$Sprite.frame = 1
+			$AnimatedSprite.frame = 1
 			$SFX.slurp()
 
 			# Flip the sprite if we're clicking behind the frog.
 			if click_position.x < 0:
-				$Sprite.flip_h = true
+				$AnimatedSprite.flip_h = true
 				self.is_facing_left = true
 				$Tongue.position = tongue_position_left
 			else:
-				$Sprite.flip_h = false
+				$AnimatedSprite.flip_h = false
 				self.is_facing_left = false
 				$Tongue.position = tongue_position_right
 
 		else:
 			$Tongue.release()
-			$Sprite.frame = 0
+			$AnimatedSprite.frame = 0
 
 func _process(_delta: float) -> void:
 	"""Update the UI every frame."""
@@ -109,9 +109,9 @@ func _physics_process(_delta: float) -> void:
 	if not $Tongue.hooked and not grounded:
 
 		if self.is_facing_left:
-			$Sprite.rotate(0.1 * self.flip_speed)
+			$AnimatedSprite.rotate(0.1 * self.flip_speed)
 		else:
-			$Sprite.rotate(-0.1 * self.flip_speed)
+			$AnimatedSprite.rotate(-0.1 * self.flip_speed)
 
 		if not self.is_flipping and self.is_initialized:
 			$SFX.flip()
@@ -126,7 +126,7 @@ func _physics_process(_delta: float) -> void:
 
 	# Apply surface friction
 	if grounded:
-		$Sprite.rotation = 0
+		$AnimatedSprite.rotation = 0
 		velocity.x *= friction_ground
 		if velocity.y >= 5:
 			velocity.y = 5
@@ -149,7 +149,7 @@ func _physics_process(_delta: float) -> void:
 func _on_fall(body):
 	if body == self and not $Tongue.hooked:
 		self.dead = true
-		$Sprite.visible = false
+		$AnimatedSprite.visible = false
 		$SFX.fall()
 		$Tongue.slurping = false
 		emit_signal("player_death")
