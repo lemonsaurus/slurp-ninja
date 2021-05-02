@@ -68,3 +68,11 @@ offset = Vector2( 0, -150 )
 stream = ExtResource( 3 )
 volume_db = -12.116
 autoplay = true
+
+[node name="DeathZone" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2( 0, 710 )
+scale = Vector2( 200000, 10 )
+shape = SubResource( 1 )
