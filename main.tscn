@@ -21,6 +21,7 @@ position = Vector2( 361.127, 333.861 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
+limit_bottom = 600
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Player/Camera2D"]
 scale = Vector2( 1.5, 1.5 )
