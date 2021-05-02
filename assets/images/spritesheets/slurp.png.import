@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/slurp.png-b0d3f201ded176b83f644cc40e67b773.stex"
+path="res://.import/slurp.png-ebb2cedb21c7b20e59f8f509ba4abda9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://slurp.png"
-dest_files=[ "res://.import/slurp.png-b0d3f201ded176b83f644cc40e67b773.stex" ]
+source_file="res://assets/images/spritesheets/slurp.png"
+dest_files=[ "res://.import/slurp.png-ebb2cedb21c7b20e59f8f509ba4abda9.stex" ]
 
 [params]
 

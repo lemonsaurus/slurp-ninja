@@ -1,0 +1,105 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/images/title_screen/mini_jam_logo.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/spritesheets/flying.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/title_screen/mini_jam_logo 2.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/PassionOne-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://scenes/ui/SlurpyMainMenu.gd" type="Script" id=5]
+[ext_resource path="res://assets/images/background/2.png" type="Texture" id=6]
+[ext_resource path="res://scenes/ui/Camera2D.gd" type="Script" id=7]
+[ext_resource path="res://scenes/ui/SlurpNinjaLogo.gd" type="Script" id=8]
+[ext_resource path="res://scenes/ui/StartGameButton.gd" type="Script" id=9]
+[ext_resource path="res://assets/images/title_screen/background.png" type="Texture" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 72
+font_data = ExtResource( 4 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 513, 300 )
+current = true
+script = ExtResource( 7 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Camera2D"]
+
+[node name="static" type="ParallaxLayer" parent="Camera2D/ParallaxBackground"]
+motion_scale = Vector2( 0, 0 )
+
+[node name="Sprite" type="Sprite" parent="Camera2D/ParallaxBackground/static"]
+position = Vector2( -676.356, -354.915 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="Autoscroller" type="ParallaxLayer" parent="Camera2D/ParallaxBackground"]
+motion_scale = Vector2( 0.15, 1 )
+motion_offset = Vector2( 10, 0 )
+motion_mirroring = Vector2( 830, 0 )
+
+[node name="Sprite" type="Sprite" parent="Camera2D/ParallaxBackground/Autoscroller"]
+modulate = Color( 0.505882, 0.505882, 0.505882, 1 )
+texture = ExtResource( 6 )
+centered = false
+offset = Vector2( 140, 300 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Logo" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 296.06, 195.617 )
+scale = Vector2( 0.864307, 0.864307 )
+texture = ExtResource( 1 )
+script = ExtResource( 8 )
+animation_speed = 6
+max_size = 0.92
+min_size = 0.85
+
+[node name="Minijam" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 868.924, 92.863 )
+scale = Vector2( 0.844909, 0.844909 )
+texture = ExtResource( 3 )
+
+[node name="Slurpy" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 848.466, 415.105 )
+scale = Vector2( 8.8626, 8.8626 )
+texture = ExtResource( 2 )
+hframes = 4
+script = ExtResource( 5 )
+
+[node name="Start game" type="Button" parent="CanvasLayer"]
+margin_left = 87.6016
+margin_top = 387.175
+margin_right = 485.602
+margin_bottom = 474.175
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.92549, 0.92549, 0.92549, 1 )
+custom_colors/font_color_hover = Color( 0.619608, 0.729412, 0.654902, 1 )
+custom_colors/font_color_pressed = Color( 0.313726, 0.423529, 0.352941, 1 )
+text = "SLURP IT UP!"
+flat = true
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Button" parent="CanvasLayer"]
+margin_left = 87.6016
+margin_top = 472.895
+margin_right = 485.602
+margin_bottom = 559.895
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.92549, 0.92549, 0.92549, 1 )
+custom_colors/font_color_hover = Color( 0.623529, 0.290196, 0.580392, 1 )
+custom_colors/font_color_pressed = Color( 0.462745, 0.129412, 0.419608, 1 )
+text = "CREDITS"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="CanvasLayer/Start game" to="CanvasLayer/Start game" method="_on_start_game"]
