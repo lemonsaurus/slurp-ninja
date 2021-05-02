@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/sfx/Fly_Small_Idle.mp3" type="AudioStream" id=1]
+[ext_resource path="res://assets/images/fly.png" type="Texture" id=2]
+[ext_resource path="res://objects/enemies/LargeFly.gd" type="Script" id=3]
+[ext_resource path="res://assets/sfx/Fly_Small_Eaten_01.mp3" type="AudioStream" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 10.8876
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 10.8439
+
+[node name="LargeFly" type="KinematicBody2D"]
+scale = Vector2( 3, 3 )
+collision_layer = 16
+collision_mask = 0
+script = ExtResource( 3 )
+fly_speed = 10
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -2.47767, 3.42155 )
+shape = SubResource( 1 )
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Idle" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 1 )
+volume_db = -8.864
+autoplay = true
+
+[node name="Dead" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource( 4 )
+volume_db = -4.136
+attenuation = 0.0980731
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -2.49718, 3.1839 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_being_slurped"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_slurp_exit"]

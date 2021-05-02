@@ -34,6 +34,8 @@ slurp={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Hook"
 2d_physics/layer_4="StartPlatform"
+2d_physics/layer_5="Enemies"
+2d_physics/layer_6="MiddlePlatforms"
 
 [physics]
 

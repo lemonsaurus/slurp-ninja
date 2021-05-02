@@ -45,21 +45,21 @@ func _input(event: InputEvent) -> void:
 		else:
 			$Tongue.release()
 			$Sprite.frame = 0
-			
+
 func _process(_delta: float) -> void:
 	"""Update the UI every frame."""
-	
+
 	if not self.dead:
 		# Update the distance label
 		var pixels_per_meter = 100
 		var offset = 4
 		var distance = int(self.global_position.distance_to(self.initial_position) / pixels_per_meter) - offset
 		var format_string = "[right]{distance} m[/right]"
-		$"../UI/Distance".bbcode_text = format_string.format({"distance": distance})	
+		$"../UI/Distance".bbcode_text = format_string.format({"distance": distance})
 
 
 func _physics_process(_delta: float) -> void:
-	
+
 	# Dead frogs don't physic.
 	if self.dead:
 		return

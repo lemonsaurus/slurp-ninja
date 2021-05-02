@@ -17,11 +17,12 @@ SPEED = -38
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 32, 180 )
+region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="Tip" type="KinematicBody2D" parent="."]
 position = Vector2( 1.41422, 2.82843 )
 collision_layer = 4
+collision_mask = 33
 
 [node name="Sprite" type="Sprite" parent="Tip"]
 position = Vector2( 1, 0 )
