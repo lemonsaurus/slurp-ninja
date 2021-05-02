@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Tongue_Thud_02.mp3-08819afd9ba8d13c9cddfa9983b6e2e5.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

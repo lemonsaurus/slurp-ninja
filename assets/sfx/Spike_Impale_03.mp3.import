@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Spike_Impale_03.mp3-e228e2bbfda7c00cdb97ba6c1dc39fb8
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

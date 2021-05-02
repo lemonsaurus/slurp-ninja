@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Fly_Large_Angry_03.mp3-b368aacf35b99bc94a26fc6d08409
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

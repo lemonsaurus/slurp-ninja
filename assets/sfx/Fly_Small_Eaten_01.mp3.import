@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Fly_Small_Eaten_01.mp3-3aa02f6d69bbf98e06886934f4f98
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
