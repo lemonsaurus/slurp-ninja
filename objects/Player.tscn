@@ -114,12 +114,15 @@ volume_db = -8.078
 
 [node name="Fall1" type="AudioStreamPlayer" parent="SFX/Fall"]
 stream = ExtResource( 5 )
+volume_db = -5.048
 
 [node name="Fall2" type="AudioStreamPlayer" parent="SFX/Fall"]
 stream = ExtResource( 21 )
+volume_db = -9.087
 
 [node name="Fall3" type="AudioStreamPlayer" parent="SFX/Fall"]
 stream = ExtResource( 14 )
+volume_db = -9.087
 
 [node name="Croak" type="Node" parent="SFX"]
 

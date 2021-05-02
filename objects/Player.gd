@@ -18,10 +18,12 @@ var is_flipping = false
 var is_initialized = false
 var is_facing_left = false
 var flip_speed = 2
+var initial_position = self.global_position
+var dead = false
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
+	if not self.dead and event is InputEventMouseButton:
 		if event.pressed:
 			var click_position = event.position - get_viewport().get_size_override() * 0.5
 			$Tongue.slurp(click_position)
@@ -41,6 +43,17 @@ func _input(event: InputEvent) -> void:
 		else:
 			$Tongue.release()
 			$Sprite.frame = 0
+			
+func _process(_delta: float) -> void:
+	"""Update the UI every frame."""
+	
+	if not self.dead:
+		# Update the distance label
+		var pixels_per_meter = 100
+		var offset = 4
+		var distance = int(self.global_position.distance_to(self.initial_position) / pixels_per_meter) - offset
+		var format_string = "[right]{distance} m[/right]"
+		$"../UI/Distance".bbcode_text = format_string.format({"distance": distance})	
 
 
 func _physics_process(_delta: float) -> void:
@@ -129,4 +142,5 @@ func _physics_process(_delta: float) -> void:
 
 func _on_death(body):
 	if body == self:
-		pass
+		self.dead = true
+		$SFX.fall()

@@ -12,7 +12,7 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[node name="Main" type="Node2D"]
+[node name="Root" type="Node2D"]
 
 [node name="UI" parent="." instance=ExtResource( 5 )]
 script = ExtResource( 7 )
@@ -71,11 +71,6 @@ texture = ExtResource( 4 )
 centered = false
 offset = Vector2( 0, -150 )
 
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-volume_db = -12.116
-autoplay = true
-
 [node name="DeathZone" type="Area2D" parent="."]
 collision_mask = 2
 
@@ -83,6 +78,11 @@ collision_mask = 2
 position = Vector2( 0, 710 )
 scale = Vector2( 200000, 10 )
 shape = SubResource( 1 )
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -8.864
+autoplay = true
 
 [connection signal="body_entered" from="DeathZone" to="Player" method="_on_death"]
 [connection signal="body_entered" from="DeathZone" to="UI" method="_on_death"]
