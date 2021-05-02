@@ -26,7 +26,7 @@ var dead_by_fly = false
 
 
 func _input(event: InputEvent) -> void:
-	if not self.dead and not self.dead_by_fly and event is InputEventMouseButton:
+	if not self.dead and not self.dead_by_fly and event is InputEventMouseButton and event.button_index == 1:
 		if event.pressed:
 			var click_position = event.position - get_viewport().get_size_override() * 0.5
 			$Tongue.slurp(click_position)

@@ -67,8 +67,8 @@ scale = Vector2( 0.844909, 0.844909 )
 texture = ExtResource( 3 )
 
 [node name="Slurpy" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 848.466, 415.105 )
-scale = Vector2( 8.8626, 8.8626 )
+position = Vector2( 794.494, 342.085 )
+scale = Vector2( 5.15867, 5.15867 )
 texture = ExtResource( 2 )
 hframes = 4
 script = ExtResource( 5 )
