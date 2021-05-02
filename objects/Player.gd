@@ -67,6 +67,8 @@ func _physics_process(_delta: float) -> void:
 			tongue_velocity.x -= self.flight_speed * true_flight
 
 		# If we're falling, we want to pull up a bit faster.
+		if tongue_velocity.y > 0 and tongue_distance < 250:
+			tongue_velocity.y *= 0.55
 		if tongue_velocity.y > 0:
 			tongue_velocity.y *= 0.85
 		elif tongue_velocity.y < 0:
