@@ -146,10 +146,17 @@ func _physics_process(_delta: float) -> void:
 			velocity.y *= friction_air
 
 
-func _on_death(body):
+func _on_fall(body):
 	if body == self and not $Tongue.hooked:
 		self.dead = true
 		$Sprite.visible = false
 		$SFX.fall()
 		$Tongue.slurping = false
 		emit_signal("player_death")
+		
+func impale():
+	self.dead = true
+	$SFX.damage()
+	$Tongue.slurping = false
+	self.rotation_degrees = 180
+	emit_signal("player_death")
