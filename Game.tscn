@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/images/background/4.png" type="Texture" id=3]
 [ext_resource path="res://scenes/enemies/LargeFly.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/images/background/2.png" type="Texture" id=5]
-[ext_resource path="res://assets/music/frogjutsu.mp3" type="AudioStream" id=6]
+[ext_resource path="res://scenes/Game.gd" type="Script" id=6]
 [ext_resource path="res://assets/images/background/3.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/background/6.png" type="Texture" id=8]
 [ext_resource path="res://scenes/ui/UI.tscn" type="PackedScene" id=9]
@@ -14,7 +14,8 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[node name="Root" type="Node2D"]
+[node name="Game" type="Node2D"]
+script = ExtResource( 6 )
 
 [node name="UI" parent="." instance=ExtResource( 9 )]
 script = ExtResource( 2 )
@@ -99,15 +100,11 @@ position = Vector2( 0, 710 )
 scale = Vector2( 200000, 10 )
 shape = SubResource( 1 )
 
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-volume_db = -8.864
+[node name="Enemies" type="Node2D" parent="."]
 
-[node name="LargeFly" parent="." instance=ExtResource( 4 )]
+[node name="LargeFly" parent="Enemies" instance=ExtResource( 4 )]
 position = Vector2( 625.523, 140.326 )
 fly_speed = 50
-
-[node name="Enemies" type="Node2D" parent="."]
 
 [node name="Spikes" type="Node2D" parent="."]
 

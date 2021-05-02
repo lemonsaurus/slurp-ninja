@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/music/leap_of_frog.mp3" type="AudioStream" id=1]
+[ext_resource path="res://scenes/music/LeapOfFrog.gd" type="Script" id=2]
+
+[node name="LeapOfFrog" type="AudioStreamPlayer"]
+stream = ExtResource( 1 )
+volume_db = -5.909
+script = ExtResource( 2 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/images/title_screen/mini_jam_logo.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/spritesheets/flying.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scenes/ui/SlurpNinjaLogo.gd" type="Script" id=8]
 [ext_resource path="res://scenes/ui/StartGameButton.gd" type="Script" id=9]
 [ext_resource path="res://assets/images/title_screen/background.png" type="Texture" id=10]
+[ext_resource path="res://scenes/MainMenu.gd" type="Script" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -18,6 +19,7 @@ font_data = ExtResource( 4 )
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -65,8 +67,8 @@ scale = Vector2( 0.844909, 0.844909 )
 texture = ExtResource( 3 )
 
 [node name="Slurpy" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 848.466, 415.105 )
-scale = Vector2( 8.8626, 8.8626 )
+position = Vector2( 794.494, 342.085 )
+scale = Vector2( 5.15867, 5.15867 )
 texture = ExtResource( 2 )
 hframes = 4
 script = ExtResource( 5 )
