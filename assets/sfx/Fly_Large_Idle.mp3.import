@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Fly_Large_Idle.mp3-862c4f668c753a16fa287900048d0b6f.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/Fly_Large_Idle.mp3"
+dest_files=[ "res://.import/Fly_Large_Idle.mp3-862c4f668c753a16fa287900048d0b6f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

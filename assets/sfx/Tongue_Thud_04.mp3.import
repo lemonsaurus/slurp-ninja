@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Tongue_Thud_04.mp3-2b95e50cf86ec054e88370f575d679ff.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/Tongue_Thud_04.mp3"
+dest_files=[ "res://.import/Tongue_Thud_04.mp3-2b95e50cf86ec054e88370f575d679ff.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

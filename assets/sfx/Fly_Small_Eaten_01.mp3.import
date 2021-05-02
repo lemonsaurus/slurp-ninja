@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Fly_Small_Eaten_01.mp3-3aa02f6d69bbf98e06886934f4f988e8.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/Fly_Small_Eaten_01.mp3"
+dest_files=[ "res://.import/Fly_Small_Eaten_01.mp3-3aa02f6d69bbf98e06886934f4f988e8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

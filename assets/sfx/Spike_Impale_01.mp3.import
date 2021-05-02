@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Spike_Impale_01.mp3-be6bbaa98ad87a5f467bbd53ffd7d26f.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/Spike_Impale_01.mp3"
+dest_files=[ "res://.import/Spike_Impale_01.mp3-be6bbaa98ad87a5f467bbd53ffd7d26f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

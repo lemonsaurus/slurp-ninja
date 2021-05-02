@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Fly_Large_Angry_04.mp3-a9e4ce110ba55c90d6cb4372e2cb57d1.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/Fly_Large_Angry_04.mp3"
+dest_files=[ "res://.import/Fly_Large_Angry_04.mp3-a9e4ce110ba55c90d6cb4372e2cb57d1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
