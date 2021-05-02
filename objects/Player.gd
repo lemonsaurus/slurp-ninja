@@ -3,6 +3,8 @@ This script controls the player character.
 """
 extends KinematicBody2D
 
+signal player_death
+
 export var gravity = 20
 export var max_speed = 1000
 export var friction_air = 0.95
@@ -57,6 +59,10 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	
+	# Dead frogs don't physic.
+	if self.dead:
+		return
 
 	# Gravity is a thing that exists.
 	velocity.y += gravity
@@ -141,6 +147,9 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_death(body):
-	if body == self:
+	if body == self and not $Tongue.hooked:
 		self.dead = true
+		$Sprite.visible = false
 		$SFX.fall()
+		$Tongue.slurping = false
+		emit_signal("player_death")

@@ -22,8 +22,7 @@ var dead_strings = [
 ]
 
 
-func _on_death(body):
-	if body == $"../Player":
-		$DeathText.bbcode_text = dead_format % self.dead_strings[randi() % self.dead_strings.size()]
-		$DeathText.visible = true
-		$DeathButton.visible = true
+func _on_death():
+	$DeathText.bbcode_text = dead_format % self.dead_strings[randi() % self.dead_strings.size()]
+	$DeathText.visible = true
+	$DeathButton.visible = true

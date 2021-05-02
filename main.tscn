@@ -84,5 +84,5 @@ stream = ExtResource( 3 )
 volume_db = -8.864
 autoplay = true
 
+[connection signal="player_death" from="Player" to="UI" method="_on_death"]
 [connection signal="body_entered" from="DeathZone" to="Player" method="_on_death"]
-[connection signal="body_entered" from="DeathZone" to="UI" method="_on_death"]
