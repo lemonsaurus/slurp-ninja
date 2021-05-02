@@ -23,11 +23,11 @@ var flip_speed = 2
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.pressed:
-			var click_position = event.position - get_viewport().size * 0.5
+			var click_position = event.position - get_viewport().get_size_override() * 0.5
 			$Tongue.slurp(click_position)
 			$Sprite.frame = 1
 			$SFX.slurp()
-		
+
 			# Flip the sprite if we're clicking behind the frog.
 			if click_position.x < 0:
 				$Sprite.flip_h = true
@@ -37,7 +37,7 @@ func _input(event: InputEvent) -> void:
 				$Sprite.flip_h = false
 				self.is_facing_left = false
 				$Tongue.position = tongue_position_right
-				
+
 		else:
 			$Tongue.release()
 			$Sprite.frame = 0
@@ -51,9 +51,9 @@ func _physics_process(_delta: float) -> void:
 	# Slurp physics!
 	if $Tongue.hooked:
 		var tongue_distance = $Tongue.tip_location.distance_to(self.global_position)
-		var tongue_direction = to_local($Tongue.tip_location).normalized() 
+		var tongue_direction = to_local($Tongue.tip_location).normalized()
 
-		# Set initial velocity.		
+		# Set initial velocity.
 		tongue_velocity = tongue_direction * tongue_pull
 
 		# Increase the x velocity to make the player arc.
@@ -65,55 +65,55 @@ func _physics_process(_delta: float) -> void:
 			tongue_velocity.x += self.flight_speed * true_flight
 		elif tongue_velocity.x < 0:
 			tongue_velocity.x -= self.flight_speed * true_flight
-	
+
 		# If we're falling, we want to pull up a bit faster.
 		if tongue_velocity.y > 0:
 			tongue_velocity.y *= 0.85
 		elif tongue_velocity.y < 0:
 			tongue_velocity.y *= 1.30
-				
+
 	else:
 		tongue_velocity = Vector2(0,0)
-		
+
 	# This is the magic sauce. This makes it actually move.
 	velocity += tongue_velocity
-	move_and_slide(velocity, Vector2.UP)	
-	
+	move_and_slide(velocity, Vector2.UP)
+
 	# Apply some clamps. We don't want the frog moving _too_ fast.
 	velocity.y = clamp(velocity.y, -max_speed, max_speed)
 	velocity.x = clamp(velocity.x, -max_speed, max_speed)
-	
+
 	# Make the frog flip!
 	var grounded = is_on_floor()
 	if not $Tongue.hooked and not grounded:
-		
+
 		if self.is_facing_left:
 			$Sprite.rotate(0.1 * self.flip_speed)
 		else:
 			$Sprite.rotate(-0.1 * self.flip_speed)
-		
+
 		if not self.is_flipping and self.is_initialized:
 			$SFX.flip()
 			self.is_flipping = true
-			
-	
+
+
 	# Reset flip states.
 	if $Tongue.hooked or grounded:
 		self.is_flipping = false
 		self.flip_speed = rand_range(1.5, 3.0)
-		
-	
+
+
 	# Apply surface friction
 	if grounded:
 		$Sprite.rotation = 0
 		velocity.x *= friction_ground
-		if velocity.y >= 5:		     
-			velocity.y = 5		     
-			
+		if velocity.y >= 5:
+			velocity.y = 5
+
 		# Is this the first time we land?
 		if not self.is_initialized:
 			self.is_initialized = true
-			
+
 	# Bounce off ceilings.
 	elif is_on_ceiling() and velocity.y <= -5:
 		velocity.y = -5
