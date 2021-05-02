@@ -84,31 +84,31 @@ volume_db = -8.078
 
 [node name="Slurp1" type="AudioStreamPlayer" parent="SFX/Slurp"]
 stream = ExtResource( 17 )
-volume_db = -8.078
+volume_db = -14.578
 
 [node name="Slurp2" type="AudioStreamPlayer" parent="SFX/Slurp"]
 stream = ExtResource( 16 )
-volume_db = -8.078
+volume_db = -14.578
 
 [node name="Slurp3" type="AudioStreamPlayer" parent="SFX/Slurp"]
 stream = ExtResource( 18 )
-volume_db = -8.078
+volume_db = -14.578
 
 [node name="Slurp4" type="AudioStreamPlayer" parent="SFX/Slurp"]
 stream = ExtResource( 24 )
-volume_db = -8.078
+volume_db = -14.578
 
 [node name="Slurp5" type="AudioStreamPlayer" parent="SFX/Slurp"]
 stream = ExtResource( 8 )
-volume_db = -8.078
+volume_db = -14.578
 
 [node name="Slurp6" type="AudioStreamPlayer" parent="SFX/Slurp"]
 stream = ExtResource( 26 )
-volume_db = -8.078
+volume_db = -14.578
 
 [node name="Slurp7" type="AudioStreamPlayer" parent="SFX/Slurp"]
 stream = ExtResource( 10 )
-volume_db = -8.078
+volume_db = -14.578
 
 [node name="Fall" type="Node" parent="SFX"]
 
@@ -139,18 +139,24 @@ stream = ExtResource( 12 )
 
 [node name="Damage1" type="AudioStreamPlayer" parent="SFX/Damage"]
 stream = ExtResource( 9 )
+volume_db = -3.545
 
 [node name="Damage2" type="AudioStreamPlayer" parent="SFX/Damage"]
 stream = ExtResource( 11 )
+volume_db = -3.545
 
 [node name="Damage3" type="AudioStreamPlayer" parent="SFX/Damage"]
 stream = ExtResource( 25 )
+volume_db = -3.545
 
 [node name="Damage4" type="AudioStreamPlayer" parent="SFX/Damage"]
 stream = ExtResource( 27 )
+volume_db = -3.545
 
 [node name="Damage5" type="AudioStreamPlayer" parent="SFX/Damage"]
 stream = ExtResource( 19 )
+volume_db = -3.545
 
 [node name="Damage6" type="AudioStreamPlayer" parent="SFX/Damage"]
 stream = ExtResource( 7 )
+volume_db = -3.545

@@ -75,7 +75,7 @@ offset = Vector2( 0, -75 )
 
 [node name="BackmostMountains" type="ParallaxLayer" parent="Player/Camera2D/ParallaxBackground"]
 motion_scale = Vector2( 0.15, 0 )
-motion_mirroring = Vector2( 854, 0 )
+motion_mirroring = Vector2( 830, 0 )
 
 [node name="Sprite" type="Sprite" parent="Player/Camera2D/ParallaxBackground/BackmostMountains"]
 texture = ExtResource( 6 )
@@ -84,7 +84,7 @@ offset = Vector2( 0, -50 )
 
 [node name="FrontMountains" type="ParallaxLayer" parent="Player/Camera2D/ParallaxBackground"]
 motion_scale = Vector2( 0.1, 0 )
-motion_mirroring = Vector2( 854, 0 )
+motion_mirroring = Vector2( 830, 0 )
 
 [node name="Sprite" type="Sprite" parent="Player/Camera2D/ParallaxBackground/FrontMountains"]
 texture = ExtResource( 4 )

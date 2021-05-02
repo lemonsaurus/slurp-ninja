@@ -18,7 +18,7 @@ font_data = ExtResource( 3 )
 [sub_resource type="Theme" id=4]
 default_font = SubResource( 3 )
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.56, 0.2576, 0.3332, 1 )
 corner_radius_top_left = 20
 corner_radius_top_right = 20
@@ -27,7 +27,7 @@ corner_radius_bottom_left = 20
 shadow_size = 2
 shadow_offset = Vector2( 0, 2 )
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.678431, 0.32549, 0.32549, 1 )
 corner_radius_top_left = 20
 corner_radius_top_right = 20
@@ -36,7 +36,7 @@ corner_radius_bottom_left = 20
 shadow_size = 2
 shadow_offset = Vector2( 0, 2 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=7]
 size = 48
 extra_spacing_top = 8
 font_data = ExtResource( 3 )
@@ -68,8 +68,6 @@ margin_right = 864.256
 margin_bottom = 601.0
 theme = SubResource( 4 )
 bbcode_enabled = true
-bbcode_text = "[center]You're a frog , harry![/center]"
-text = "You're a frog , harry!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -85,15 +83,15 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="DeathButton"]
-margin_left = 413.0
+margin_left = 412.0
 margin_top = 347.0
-margin_right = 613.0
+margin_right = 612.0
 margin_bottom = 407.0
 rect_min_size = Vector2( 200, 60 )
-custom_styles/hover = SubResource( 6 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/normal = SubResource( 7 )
-custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.905882, 0.905882, 0.905882, 1 )
 custom_colors/font_color_hover = Color( 0.968627, 0.968627, 0.968627, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
