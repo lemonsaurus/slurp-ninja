@@ -125,3 +125,8 @@ func _physics_process(_delta: float) -> void:
 		velocity.x *= friction_air
 		if velocity.y > 0:
 			velocity.y *= friction_air
+
+
+func _on_death(body):
+	if body == self:
+		pass
