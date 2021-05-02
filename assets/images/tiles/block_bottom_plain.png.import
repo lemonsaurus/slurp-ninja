@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/block_bottom.png-3e4718c006abc276daed3d7e8d6d5429.stex"
+path="res://.import/block_bottom_plain.png-33913aae324ce835f8aa2d5a1aa99d31.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/block_bottom.png"
-dest_files=[ "res://.import/block_bottom.png-3e4718c006abc276daed3d7e8d6d5429.stex" ]
+source_file="res://assets/images/tiles/block_bottom_plain.png"
+dest_files=[ "res://.import/block_bottom_plain.png-33913aae324ce835f8aa2d5a1aa99d31.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
