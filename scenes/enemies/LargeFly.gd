@@ -5,7 +5,8 @@ signal fly_moved (new_location)
 export var fly_speed = 30
 onready var initial_y = self.global_position.y
 onready var initial_x = self.global_position.x
-onready var tongue = $"../Player/Tongue/Tip"
+onready var tongue = $"../../Player/Tongue/Tip"
+onready var player = $"../../Player"
 
 var velocity = Vector2(0,0)
 var being_slurped = false
@@ -56,3 +57,5 @@ func _on_being_slurped(body):
 		$Sprite.frame = 1
 		$SFX/Idle.stop()
 		$SFX/Dead.play()
+	elif body == player:
+		player.death_by_fly()

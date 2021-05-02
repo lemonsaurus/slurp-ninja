@@ -10,7 +10,6 @@ var increasing = true
 
 
 func _process(delta):
-	print(animation_rate)
 	if self.increasing:
 		self.scale.x += animation_rate
 		self.scale.y += animation_rate

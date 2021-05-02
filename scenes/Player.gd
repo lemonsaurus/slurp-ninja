@@ -22,14 +22,17 @@ var is_facing_left = false
 var flip_speed = 2
 var initial_position = self.global_position
 var dead = false
+var dead_by_fly = false
 
 
 func _input(event: InputEvent) -> void:
-	if not self.dead and event is InputEventMouseButton:
+	if not self.dead and not self.dead_by_fly and event is InputEventMouseButton:
 		if event.pressed:
 			var click_position = event.position - get_viewport().get_size_override() * 0.5
 			$Tongue.slurp(click_position)
-			$AnimatedSprite.frame = 1
+			$AnimatedSprite.animation = "Slurp"
+			$AnimatedSprite.speed_scale = 7.5
+			$AnimatedSprite.play()
 			$SFX.slurp()
 
 			# Flip the sprite if we're clicking behind the frog.
@@ -44,7 +47,9 @@ func _input(event: InputEvent) -> void:
 
 		else:
 			$Tongue.release()
-			$AnimatedSprite.frame = 0
+			$AnimatedSprite.animation = "Idle"
+			$AnimatedSprite.speed_scale = 1.5
+			$AnimatedSprite.play()
 
 func _process(_delta: float) -> void:
 	"""Update the UI every frame."""
@@ -98,7 +103,7 @@ func _physics_process(_delta: float) -> void:
 
 	# This is the magic sauce. This makes it actually move.
 	velocity += tongue_velocity
-	move_and_slide(velocity, Vector2.UP)
+	velocity = move_and_slide(velocity, Vector2.UP)
 
 	# Apply some clamps. We don't want the frog moving _too_ fast.
 	velocity.y = clamp(velocity.y, -max_speed, max_speed)
@@ -116,7 +121,16 @@ func _physics_process(_delta: float) -> void:
 		if not self.is_flipping and self.is_initialized:
 			$SFX.flip()
 			self.is_flipping = true
+			$AnimatedSprite.animation = "Flip"
+			$AnimatedSprite.stop()
+			$AnimatedSprite.frame = randi() % 4
 
+	# TODO: Write a state machine, holy shit.
+	# Meanwhile, let's reset to idle if we're done flying.
+	if grounded and $AnimatedSprite.animation == "Flip":
+		$AnimatedSprite.animation = "Idle"
+		$AnimatedSprite.speed_scale = 1.5
+		$AnimatedSprite.play()
 
 	# Reset flip states.
 	if $Tongue.hooked or grounded:
@@ -157,6 +171,11 @@ func _on_fall(body):
 func impale():
 	self.dead = true
 	$SFX.damage()
-	$Tongue.slurping = false
+	$Tongue.release()
 	self.rotation_degrees = 180
 	emit_signal("player_death")
+	
+func death_by_fly():
+	self.dead_by_fly = true
+	$Tongue.release()
+	$SFX.damage()
