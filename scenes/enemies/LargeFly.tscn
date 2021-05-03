@@ -28,10 +28,9 @@ shape = SubResource( 1 )
 
 [node name="SFX" type="Node" parent="."]
 
-[node name="Idle" type="AudioStreamPlayer" parent="SFX"]
+[node name="Idle" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource( 1 )
 volume_db = -8.864
-autoplay = true
 
 [node name="Dead" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource( 4 )

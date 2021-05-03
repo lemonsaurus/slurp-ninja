@@ -28,7 +28,8 @@ var dead_by_fly = false
 func _input(event: InputEvent) -> void:
 	if not self.dead and not self.dead_by_fly and event is InputEventMouseButton and event.button_index == 1:
 		if event.pressed:
-			var click_position = event.position - get_viewport().get_size_override() * 0.5
+			var click_position = event.position - (get_viewport().get_size_override() * 0.5)
+			print(click_position)
 			$Tongue.slurp(click_position)
 			$AnimatedSprite.animation = "Slurp"
 			$AnimatedSprite.speed_scale = 7.5
@@ -53,7 +54,7 @@ func _input(event: InputEvent) -> void:
 
 func _process(_delta: float) -> void:
 	"""Update the UI every frame."""
-
+	
 	if not self.dead:
 		# Update the distance label
 		var pixels_per_meter = 100
@@ -71,6 +72,11 @@ func _physics_process(_delta: float) -> void:
 
 	# Gravity is a thing that exists.
 	velocity.y += gravity
+	
+	# TODO: Rotate to face slurp target
+	if $Tongue.slurping or $Tongue.hooked:
+		pass
+		
 
 	# Slurp physics!
 	if $Tongue.hooked:
@@ -148,6 +154,9 @@ func _physics_process(_delta: float) -> void:
 		# Is this the first time we land?
 		if not self.is_initialized:
 			self.is_initialized = true
+			
+		# Survive by fly!
+		self.dead_by_fly = false
 
 	# Bounce off ceilings.
 	elif is_on_ceiling() and velocity.y <= -5:
@@ -172,10 +181,11 @@ func impale():
 	self.dead = true
 	$SFX.damage()
 	$Tongue.release()
-	self.rotation_degrees = 180
+	$AnimatedSprite.animation = "Dead"
 	emit_signal("player_death")
 	
 func death_by_fly():
 	self.dead_by_fly = true
+	$AnimatedSprite.animation = "Dead"
 	$Tongue.release()
 	$SFX.damage()
